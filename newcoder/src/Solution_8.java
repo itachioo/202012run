@@ -25,7 +25,21 @@ public class Solution_8 {
          * 若mid < left, mid位于右侧非降序子数组中，最小值在其前面，移动right到mid位置，缩小查找范围；
          * 如此反复，直至left、right分别指向相邻的两个元素，终止。
          */
-        return 0;
+        if(array.length==0) return 0;
+        int l = 0, r= array.length-1;
+        while(array[l]>=array[r]) {
+            if(r-l==1) return array[r]; //指针指向相邻的元素时返回array[r]
+            int mid = array[l] + (array[r]-array[l])/2;
+            if(array[l]==array[mid]&&array[r]==array[mid]) { //这种情况无法判断mid处于哪个子数组,暴力解之
+                for(int i=1;i< array.length;i++) {
+                    if(array[i]<array[i-1]) return array[i];
+                }
+            }
+            if(array[mid]>array[l]) l = mid;
+            else r=mid;
+
+        }
+        return array[l];
 
     }
 
