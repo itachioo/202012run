@@ -8,47 +8,42 @@ public class Solution_14 {
         /**
          * 思路1：类似于插入排序，list2在list1中找到合适的位置插进去
          */
-        if(list1==null) return list2;
-        if(list2==null) return list1;
+        if(l1==null) return l2;
+        if(l2==null) return l1;
         ListNode pre = new ListNode(Integer.MAX_VALUE);
-        ListNode cur = list1;
-        ListNode next = cur.next;
-        ListNode head = list2.val<=list1.val ? list2 : list1;
-        while(list2!=null) {
-            ListNode temp = list2.next;
+        ListNode cur = l1;
+        // ListNode next = cur.next;
+        ListNode head = l2.val<=l1.val ? l2 : l1;
+        while(l2!=null) {
+            ListNode temp = l2.next;
             while(cur!=null) {
-                if(list2.val>cur.val) {
+                if(l2.val>cur.val) {
                     pre = cur;
-                    cur = next;
-                    if(cur==null) {
-                        pre.next = list2;
-                        list2.next = null;
-                        cur= list2;
-                        next = cur.next;
-                        list2 = temp;
-                    }
-                    else{
-                        next = cur.next;
-                    }
+                    cur = cur.next;
+                    // if(cur==null) {
+                    //     pre.next = l2;
+                    //     l2.next = null;
+                    //     cur = l2;
+                    //     next = cur.next;
+                    //     l2 = temp;
+                    //     break;
+                    // }
+                    // else{
+                    //     next = cur.next;
+                    // }
 
                 }
                 else{
-//                    if(pre==null) {
-//                        list2.next = cur;
-//                        pre = cur;
-//                        cur = next;
-//                        next = next.next;
-//                        list2 = temp;
-//                        break;
-//                    }
-//                    else{
-                        pre.next = list2;
-                        list2.next = cur;
-                        pre = list2;
-                        list2 = temp;
+                        pre.next = l2;
+                        l2.next = cur;
+                        pre = l2;
+                        l2 = temp;
                         break;
-//                    }
                 }
+            }
+            if(cur==null) {
+                pre.next = l2;
+                break;
             }
         }
         return head;
