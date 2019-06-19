@@ -4,7 +4,7 @@ public class Solution_14 {
     /**
      * 题目：输入两个单调递增的链表，输出两个链表合成后的链表，当然我们需要合成后的链表满足单调不减规则。
      */
-    public ListNode Merge(ListNode list1,ListNode list2) {
+    public ListNode Merge(ListNode l1,ListNode l2) {
         /**
          * 思路1：类似于插入排序，list2在list1中找到合适的位置插进去
          */
