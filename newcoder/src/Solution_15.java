@@ -15,7 +15,7 @@ public class Solution_15 {
             if(node.left != null) queue.offer(node.left);
             if(node.right != null) queue.offer(node.right);
             if(node.val==val) {
-                boolean res = treeEqual(node,root2);
+                boolean res = treeContain(node,root2);
                 if(res) return true;
             }
         }
@@ -23,15 +23,22 @@ public class Solution_15 {
     }
 
 
-    public boolean treeEqual(TreeNode a, TreeNode b) {
+    public boolean treeContain(TreeNode a, TreeNode b) {
         if(b==null) return true;
         if(a!=null){
             if(a.val != b.val) return false;
-            else return treeEqual(a.left,b.left)&&treeEqual(a.right,b.right);
+            else return treeContain(a.left,b.left)&& treeContain(a.right,b.right);
         }
         else
             return false;
 
+    }
+
+    public boolean treeEqual(TreeNode a, TreeNode b) {
+        if(b==null) return a==null;
+        if(a==null) return false;
+        if(a.val!=b.val) return false;
+        return treeEqual(a.left,b.left)&&treeEqual(a.right,b.right);
     }
     class TreeNode {
         int val = 0;
