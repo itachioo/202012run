@@ -35,8 +35,6 @@ public class Solution_22 {
         process(l, res, temp, target);
         process(r, res,temp, target);
         temp.remove(temp.size()-1);
-
-
     }
 
     @Test
