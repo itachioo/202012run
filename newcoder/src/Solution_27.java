@@ -13,6 +13,7 @@ public class Solution_27 {
             else{
                 TreeLinkNode parent = pNode.next;
                 while(parent!=null&&parent.left!=pNode) {
+                    pNode = parent;
                     parent = parent.next;
                 }
                 return parent;
