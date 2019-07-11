@@ -10,10 +10,10 @@ public class Solution_30 {
     	 ArrayList<ArrayList<Integer>> res = new ArrayList<>();
     	 if(pRoot==null) return res;
     	 queue.offer(pRoot);
-    	 while(!queue1.isEmpty()) {
+    	 while(!queue.isEmpty()) {
     	 	ArrayList<Integer> temp = new ArrayList<>();
     	    int cnt = queue.size();
-            for(int i=0;i<size;i++) {
+            for(int i=0;i<cnt;i++) {
                 TreeNode node = queue.poll();
                 temp.add(node.val);
                 if(node.left!=null) queue.offer(node.left);
