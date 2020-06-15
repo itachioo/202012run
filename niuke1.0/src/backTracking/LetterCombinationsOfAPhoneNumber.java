@@ -37,9 +37,8 @@ public class LetterCombinationsOfAPhoneNumber{
     public static List<String> letterCombinations(String digits) {
         int len = digits.length();
         List<String> res = new ArrayList<>();
-        String[] map = {" ", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv","wxyz"};
-        List<String> temp = new ArrayList<>();
-        process(res, "",  digits, map, 0);
+        String[] numToStr = {" ", " ", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv","wxyz"};
+        process(res, "",  digits, numToStr, 0);
         System.out.println(res);
         return res;
     }
