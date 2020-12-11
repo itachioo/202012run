@@ -77,6 +77,6 @@ class TwoSumSolution {
     }
     public int[] twoSum2(int[] nums, int target) {
         int res[] = new int[2];
-
+        return res;
     }
 }
