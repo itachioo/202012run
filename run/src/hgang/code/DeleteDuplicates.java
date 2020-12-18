@@ -34,7 +34,7 @@ public class DeleteDuplicates{
         node.next.next = new ListNode1(2);
         node.next.next.next = new ListNode1(3);
         node.next.next.next.next = new ListNode1(3);
-        System.out.println(solution.deleteDuplicates(node));
+        System.out.println(solution.deleteDuplicates1(node));
     }
     //leetcode submit region begin(Prohibit modification and deletion)
 
@@ -70,7 +70,7 @@ class deleteDuplicatesSolution {
         if(head==null) return head;
         //换个思路，比较cur和cur的下个节点，用一个指针cur
         ListNode1 cur = head;
-        while(cur!=null&cur.next!=null) {
+        while(cur!=null&&cur.next!=null) {
             if(cur.val==cur.next.val) {
                 cur.next = cur.next.next;
             }else {
