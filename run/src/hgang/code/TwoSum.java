@@ -44,11 +44,14 @@ package hgang.code;
 // 👍 18135 👎 647
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class TwoSum{
     public static void main(String[] args) {
         TwoSumSolution solution  = new TwoSumSolution();
-        int[] nums = {2,7,11,15};
-        solution.twoSum1(nums,9);
+        int[] nums = {3,2,4};
+        solution.twoSum2(nums,6);
 
     }
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -76,7 +79,19 @@ class TwoSumSolution {
         return res;
     }
     public int[] twoSum2(int[] nums, int target) {
-        int res[] = new int[2];
+        //空间换时间，利用map常数时间查询特性，一次遍历数组得到结果
+        int[] res = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i=0;i<nums.length;i++) {
+            map.put(nums[i], i);
+        }
+        for(int i=0;i<nums.length;i++) {
+            int one = nums[i];
+            if (map.containsKey(target-one)) {
+                res[0] = i;
+                res[1] = map.get(target-one);
+            }
+        }
         return res;
     }
 }
