@@ -1,4 +1,4 @@
-package hgang.code;
+package hgang.code.list;
 
 //Merge two sorted linked lists and return it as a new sorted list. The new list
 // should be made by splicing together the nodes of the first two lists.
@@ -35,14 +35,6 @@ package hgang.code;
 //
 // Related Topics Linked List
 // 👍 5496 👎 682
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-}
 
 public class MergeTwoSortedLists {
     public static void main(String[] args) {
