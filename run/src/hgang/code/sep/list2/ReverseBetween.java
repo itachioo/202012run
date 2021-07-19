@@ -55,33 +55,37 @@ import java.util.List;
 public class ReverseBetween {
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
+//        head.next = new ListNode(2);
+//        head.next.next = new ListNode(3);
 //        head.next.next.next  = new ListNode(4);
 //        head.next.next.next.next  = new ListNode(5);
         ReverseBetweenSolution solution = new ReverseBetweenSolution();
-        ListNode p = solution.reverseBetween(head,1,3);
+        ListNode p = solution.reverseBetween1(head,1,1);
         System.out.println(p);
     }
 }
 
 class ReverseBetweenSolution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
+        //讨论单节点的情况
         if(head==null||head.next==null) return head;
+
         ListNode leftFlag= head;
         int val = right-left;
         int flag = 1;
-        while(left-1>=flag) {
+        //没有cover住从头节点开始的情况
+        while(left-1>flag) {
             leftFlag = leftFlag.next;
             flag++;
         }
-        ListNode newHead = leftFlag.next;
+        ListNode newHead = null;
+        newHead = leftFlag.next;
         ListNode rightFlag = head;
         while(right>0) {
             rightFlag = rightFlag.next;
             right--;
         }
-        ListNode node = reverse3(newHead, val);
+        ListNode node = reverse3(newHead);
         leftFlag.next = node;
         while(node!=null&&node.next!=null) {
             node = node.next;
@@ -90,15 +94,39 @@ class ReverseBetweenSolution {
         return head;
     }
 
-    public ListNode reverse3(ListNode head, int val) {
+    public ListNode reverseBetween1(ListNode head, int left, int right) {
+        if (head==null) return head;
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+        //找到left节点的前一个节点，从dummy走left-1步
+        ListNode leftPrev = dummy;
+        for(int i=0;i<left-1;i++) {
+            leftPrev = leftPrev.next;
+        }
+        ListNode leftNode = leftPrev.next;
+        ListNode rightNode = dummy;
+        for(int i=0;i<right;i++) {
+            rightNode = rightNode.next;
+        }
+        ListNode rightNext = rightNode.next;
+        //截断链表，截出要反转的链表
+        leftPrev.next = null;
+        rightNode.next = null;
+        //反转链表
+        reverse3(leftNode);
+        //连接链表
+        leftPrev.next = rightNode;
+        leftNode.next = rightNext;
+        return dummy.next;
+    }
+    public ListNode reverse3(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;
-        while (cur!=null&&val>=0) {
+        while (cur!=null) {
             ListNode next = cur.next;
             cur.next = pre;
             pre = cur;
             cur = next;
-            val--;
         }
         return pre;
     }
