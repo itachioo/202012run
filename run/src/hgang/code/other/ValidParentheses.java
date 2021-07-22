@@ -1,4 +1,4 @@
-package hgang.code;
+package hgang.code.other;
 
 //Given a string s containing just the characters '(', ')', '{', '}', '[' and ']
 //', determine if the input string is valid.

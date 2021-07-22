@@ -71,6 +71,8 @@ package hgang.code.sep.list2;
 // 👍 603 👎 0
 
 
+import java.util.HashMap;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 // Definition for a Node.
 class Node {
@@ -87,7 +89,26 @@ class Node {
 
 public class CopyRandomList {
     public Node copyRandomList(Node head) {
-        return null;
+        if(head==null) return null;
+        HashMap<Node,Node> map = new HashMap<>();
+        Node cur = head;
+        Node newHead =  new Node(cur.val);
+        Node node = newHead;
+        map.put(cur,node);
+        cur = cur.next;
+        while(cur!=null) {
+            node.next = new Node(cur.val);
+            map.put(cur,node.next);
+            node = node.next;
+            cur = cur.next;
+        }
+        //复制random指针
+        cur = head;
+        while(cur!=null) {
+            map.get(cur).random = map.get(cur.random);
+            cur = cur.next;
+        }
+        return newHead;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

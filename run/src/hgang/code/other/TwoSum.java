@@ -1,4 +1,4 @@
-package hgang.code;
+package hgang.code.other;
 
 //Given an array of integers nums and an integer target, return indices of the t
 //wo numbers such that they add up to target.

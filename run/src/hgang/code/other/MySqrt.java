@@ -1,4 +1,4 @@
-package hgang.code;
+package hgang.code.other;
 
 //实现 int sqrt(int x) 函数。
 //
@@ -25,8 +25,6 @@ package hgang.code;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-
-import com.sun.corba.se.impl.orb.ParserTable;
 
 public class MySqrt{
     public static void main(String[] args) {

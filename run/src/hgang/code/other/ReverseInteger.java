@@ -1,4 +1,4 @@
-package hgang.code;
+package hgang.code.other;
 
 //Given a 32-bit signed integer, reverse digits of an integer.
 //
