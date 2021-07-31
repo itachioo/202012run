@@ -45,10 +45,22 @@ package hgang.code.hash;
 // 👍 639 👎 0
 
 
+import java.util.HashSet;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 public class IsHappy {
     public boolean isHappy(int n) {
-        return true;
+        HashSet<Integer> set = new HashSet<>();
+        while (true) {
+            int res = 0;
+            while(n>0) {
+                int temp = n % 10;
+                res += temp * temp;
+                n = n/10;
+            }
+            if (set.contains(res)) return res ==1;
+            else set.add(res);
+        }
     }
 }
 
