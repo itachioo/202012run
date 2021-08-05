@@ -62,10 +62,34 @@ package hgang.code.TwoPoint;
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+//27、移除元素
 public class RemoveElement {
+    //O(n2)
     public int removeElement(int[] nums, int val) {
-        return 0;
+        int size = 0;
+        for (int i=0;i<nums.length;i++) {
+            if(nums[i]==val) {
+                for (int j=i+1;j<nums.length;j++) {
+                    nums[j-1] = nums[j];
+                }
+                i--;
+                size =  nums.length-1;
+            }
+        }
+        return size;
     }
+
+    public int removeElement1(int[] nums, int val) {
+        int left = 0;
+        for (int right=0;right<nums.length;right++) {
+            if (nums[right]!=val) {
+                nums[left] = nums[right];
+                left ++;
+            }
+        }
+        return left;
+    }
+
 }
 
 
