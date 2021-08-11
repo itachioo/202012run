@@ -1,4 +1,4 @@
-package hgang.code.tree;
+package hgang.code.backtracking;
 
 
 //给定两个整数 n 和 k，返回范围 [1, n] 中所有可能的 k 个数的组合。
@@ -39,12 +39,28 @@ package hgang.code.tree;
 // 👍 650 👎 0
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 public class Combine {
+    List<List<Integer>> res = new ArrayList<>();
+    List<Integer> path = new ArrayList<>();
     public List<List<Integer>> combine(int n, int k) {
-        return null;
+        process(n,k,1);
+        return res;
+    }
+
+    private void process(int n, int k, int index) {
+        if (path.size()==k) {
+            res.add(new ArrayList<>(path));
+            return;
+        }
+        for (int i=index;i<=n;i++) {
+            path.add(i);
+            process(n,k,i+1);
+            path.remove(path.size()-1);
+        }
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

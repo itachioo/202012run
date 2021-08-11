@@ -59,7 +59,6 @@ public class MinDepth {
         if (root.left==null&&root.right!=null) return 1+rightDepth;
         if (root.right==null&&root.left!=null) return 1+leftDepth;
         return 1+ Math.min(leftDepth,rightDepth);
-
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
